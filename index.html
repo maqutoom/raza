@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banner Change</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .banner {
+            width: 100%;
+            height: 200px; /* Adjust as needed */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            transition: background-color 1s ease;
+        }
+    </style>
+</head>
+<body>
+    <div id="banner" class="banner"></div>
+    <script>
+        const banners = [
+            { message: "Welcome to our website!", color: "#3498db" },
+            { message: "Check out our new products!", color: "#e74c3c" },
+            { message: "Join our newsletter for updates!", color: "#2ecc71" },
+        ];
+
+        let currentBannerIndex = 0;
+
+        function changeBanner() {
+            const banner = banners[currentBannerIndex];
+
+            const bannerElement = document.getElementById("banner");
+            bannerElement.textContent = banner.message;
+            bannerElement.style.backgroundColor = banner.color;
+
+            // Update the index for the next banner
+            currentBannerIndex = (currentBannerIndex + 1) % banners.length; // Loop back to the first banner
+        }
+
+        // Initial banner change
+        changeBanner();
+
+        // Change banner every 5 seconds
+        setInterval(changeBanner, 5000); // 5000 milliseconds = 5 seconds
+    </script>
+</body>
+</html>
